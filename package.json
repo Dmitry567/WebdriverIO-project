@@ -4,7 +4,7 @@
   "description": "Super test",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "wdio wdio.conf.js --inspect"
   },
   "author": "Dmitry Favorskiy",
   "license": "ISC",
