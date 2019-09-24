@@ -1,8 +1,10 @@
+
 function loginAction(browser){
-  browser.url('https://stage.pasv.us/user/login/');
+  browser.url('https://stage.pasv.us/user/login');
+
   const emailField = $('//input[@name="email"]');
     const passwordField = $('//input[@name="password"]');
-    const loginButton = $('//button[@type="submit"]')
+    const button = $('//button[@type="submit"]')
 
     const EMAIL = 'admin@test.com';
     const PASSWORD = '11111';
