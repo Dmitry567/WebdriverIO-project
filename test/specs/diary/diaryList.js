@@ -14,7 +14,7 @@ it('should have  main menu item Diary', () => {
 
 it('click to Diary in main menu should redirect to Diary list page', () => {
   const selectorMenuItem = '//div[@id="site-menu"]//a[text() ="Diary"]';
-   $(menuItemSelecto).click();
+   $(menuItemSelector).click();
    const actualH1Text = $('//h1').getText();
   const expected = 'Day reports';
   
