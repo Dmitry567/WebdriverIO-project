@@ -1,26 +1,24 @@
-const expect = require('chai').expect;
+const {expect} = require('chai');
+const loginAction = require('../actions/loginAction');
+
 
 describe('Login form', () =>{
   before( () => {
     browser.url('https://stage.pasv.us/user/login');
+
+    it('should have correct h1', () => {
+      const selector = '//h1';
+      const element = $(selector);
+      const actual = element.getText();
+      const expected = 'User Login';
+      
+      expect(actual).to.eq(expected);
+    });
+
   });
 
   it('should login', () =>{
-    const emailField = $('//input[@name="email"]');
-    const passwordField = $('//input[@name="password"]');
-    const loginButton = $('//button[@type="submit"]')
-
-    const EMAIL = 'admin@test.com';
-    const PASSWORD = '11111';
-
-    emailField.setValue(EMAIL);
-    passwordField.setValue(PASSWORD);
-
-
-    loginButton.click();
-
-
-    browser.pause(10000);
+    loginAction(browser);
 
   });
 
