@@ -1,16 +1,14 @@
+const { loginUrl, user} = require('../constants')
 
 function loginAction(browser){
-  browser.url('https://stage.pasv.us/user/login');
+  browser.url(loginUrl);
 
   const emailField = $('//input[@name="email"]');
     const passwordField = $('//input[@name="password"]');
     const button = $('//button[@type="submit"]')
 
-    const EMAIL = 'admin@test.com';
-    const PASSWORD = '11111';
-
-    emailField.setValue(EMAIL);
-    passwordField.setValue(PASSWORD);
+    emailField.setValue(user.admin.login);
+    passwordField.setValue(user.admin.password);
 
 
     button.click();
