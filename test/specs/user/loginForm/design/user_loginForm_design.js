@@ -1,32 +1,77 @@
 const { expect } = require('chai');
-const {baseUrl} = require('./../../../../constants');
+const {url} = require('../../../../constants');
 
-
-const url = `${baseUrl}/user/login`;
+const elements = {
+  h1: {
+    selector: '//h1',
+    color: '#333333'
+  }
+}
 
 describe ( 'User - Login Form - Desing', () => {
   before( () => {
-    browser.url(url);
+    browser.url(url.loginUrl);
 
   });
 
   it('should validate h1 is displayed', () => {
-    const element = $('//h1');
+    const element = $(elements.h1.selector);
     const isDisplayed = element.isDisplayed();
     expect(isDisplayed).to.be.true;
 
   });
 
   it('should validate h1 has a correct color', () => {
-    const element = $('//h1');
+    const element = $(elements.h1.selector);
     const actualColor = element.getCSSProperty('color').parsed.hex;
-    const expectedColor = '#333333';
+    const expectedColor = elements.h1.color;
 
     expect(actualColor).to.be.eq(expectedColor);
 
 
-    console.log(actualColor)
-
   });
+
+  it('should have correct color for empty email field', () => {
+    const element = $('//input[@name="email"]');
+    const actualBorderColor = element.getCSSProperty('border-color').parsed.hex.toLowercase();
+    const expectedBorderColor = '#ced4da';
+    expect(actualBorderColor).to.eq(expectedBorderColor);
+    
+  })
+  
+  it('should have correct color for correct email field', () => {
+    const element = $('//input[@name="email"]');
+    element.setValue('qw@asd.asd');
+    browser.keys('Tab');
+    
+
+
+    const actualBorderColor = element.getCSSProperty('border-color').parsed.hex.toLowercase();
+    const expectedBorderColor = '#24c88b';
+    
+
+    expect(actualBorderColor).to.eq(expectedBorderColor);
+    
+  })
+
+  it('should have correct color for incorrect email field', () => {
+    const element = $('//input[@name="email"]');
+    element.setValue('qw......@sd.asd');
+    browser.keys('Tab');
+    browser.pause(300);
+    
+
+
+    const actualBorderColor = element.getCSSProperty('border-color').parsed.hex.toLowercase();
+    console.log(actualBorderColor);
+
+    const expectedBorderColor = '#ff4465';
+    expect(actualBorderColor).to.eq(expectedBorderColor);
+    browser.pause(5000);
+    
+  })
   
 });
+
+  
+
