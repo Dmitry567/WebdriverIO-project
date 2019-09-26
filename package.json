@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "wdio wdio.conf.js --inspect",
-    "test:login": "wdio wdio.conf.js --spec ./test/specs/mainPage.js --inspect"
+    "test:login": "wdio wdio.conf.js --spec ./test/specs/mainPage.js --inspect",
+    "test:ted": "wdio wdio.conf.js --spec ./test/specs/ted.js --inspect" 
   },
   "author": "Dmitry Favorskiy",
   "license": "ISC",
